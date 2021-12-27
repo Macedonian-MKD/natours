@@ -1,0 +1,68 @@
+@use "../abstracts/" as *;
+@use "../base/" as *;
+
+.composition{
+    position: relative;
+    @include respond(tablet-portrait){
+        margin-bottom: 8rem;
+        position:static;
+        display: flex;
+        gap:0;
+    }
+    &__photo{
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color-black,.4);
+        border-radius: 2px;
+        position:absolute;
+        transition: all 200ms;
+        outline-offset: 2rem;
+        z-index: 2;
+        @include respond(tablet-portrait){
+            width: 30%;
+            position:static;
+            
+        }
+        &--p1{
+            left:0;
+            top:-2rem;
+            @include respond(tablet-portrait){
+                
+            }
+            @include respond(phone){
+                left:12rem;
+            }
+        }
+
+        &--p2{
+            right:0;
+            top:2rem;
+            @include respond(tablet-portrait){
+               position:relative;
+               z-index: 3;
+               top:-2rem;
+               transform:scale(1.1)
+            }
+        }
+
+        &--p3{
+            top:10rem;
+            left:20%;
+            @include respond(tablet-portrait){
+                left:30%;
+            }
+            @include respond(phone){
+                left:35%;
+            }
+        }
+
+        &:hover{
+            outline:1.5rem solid $color-primary;
+            transform:scale(1.05) translateY(-5px);
+            box-shadow: 0 2.5rem 4rem rgba($color-black,.5);
+            z-index: 88;
+        }
+    }
+    &:hover &__photo:not(:hover){
+        transform:scale(.95);
+    }
+}

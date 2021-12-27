@@ -1,0 +1,85 @@
+@use "../abstracts" as *;
+@use "../base" as *;
+
+.story{
+    width: 75%;
+    margin:0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black,.1);
+    background-color: rgba($color-white,.6);
+    border-radius: 3px;
+    padding:6rem;
+    padding-left:9rem;
+    font-size: $default-font-size;
+    transform:skewX(-12deg);
+   
+    @include respond(tablet-portrait){
+        width: 90%;
+        transform:skewX(0);
+        padding:5rem;
+    padding-left:2rem;
+    }
+    
+    @include respond(phone){
+        
+    }
+    &__shape{
+        width: 15rem;
+        height:15rem;
+        float:left;
+        -webkit-shape-outside:circle(50% at center);
+        shape-outside: circle(50% at center);
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        transform:translateX(-3rem) skewX(12deg);
+        position: relative;
+        @include respond(tablet-portrait){
+            transform:skewX(0);
+            width: 15rem;
+            height:15rem;
+        }
+     
+    }
+
+    &__image{
+        height: 100%;
+        transition:all 300ms;
+        transform:translateX(-15%) scale(1.4);
+        backface-visibility: hidden;
+    }
+
+    &__caption{
+        position: absolute;
+        top:50%;
+        left:50%;
+        text-align: center;
+        transform:translate(-50%,20%);
+        color:$color-white;
+        font-size: 1.7rem;
+        text-transform: uppercase;
+        backface-visibility: hidden;
+        transition:all 300ms;
+        opacity:0;
+    }
+
+    &__text{
+        transform:skewX(12deg);
+        @include respond(tablet-portrait){
+            transform:skewX(0)
+        }
+        &>p{
+           margin-right: -5rem;
+        }
+    }
+
+    &:hover{
+        .story__image{
+            filter:blur(3px) brightness(0.8);
+            transform:translateX(-15%) scale(1);
+
+        }
+        .story__caption{
+           opacity: 100%;;
+           transform:translate(-50%,-50%);
+        }
+    }
+}
